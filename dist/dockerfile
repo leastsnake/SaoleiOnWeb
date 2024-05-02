@@ -1,7 +1,8 @@
 FROM nginx:alpine
 RUN mkdir -p /app
 WORKDIR /app
-COPY dist/* /app
+COPY dist/ /app/
 RUN rm /usr/share/nginx/html/*
+RUN cp -r /app/  /usr/share/nginx/html/
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
