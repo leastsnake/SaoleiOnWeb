@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width">
 
-<title>设置鼠标</title>
+<title>设置触屏</title>
 
 <style>
 body{background:#f7f7f0;}
@@ -27,43 +27,36 @@ table{border-collapse:collapse;cursor:default;}
 
 <br><br>
 
-
-鼠标起效时间点
-<br>
-<br>
-<br>
-<i>左键</i>
-<br>
 <br>
 
-
-<input type="radio" name="mp1" value="0" checked="" onclick="save('mp1',0);">点下
-<input type="radio" name="mp1" value="1" onclick="save('mp1',1);">松开
-<input type="radio" name="mp1" value="2" onclick="save('mp1',2);">两次
+<i>触击模式</i>
 <br>
 <br>
+<input type="radio" name="tpn" value="0" checked="" onclick="save('tpn',0);more(0);">标记
+<input type="radio" name="tpn" value="1" onclick="save('tpn',1);more(1);">直开
 
-
-
-
-
-<br>
+<br><br>
 <br>
 
-<i>右键</i>
+<div id="hint" style="display:none;">
+<i>直开模式下的标记方法</i>
+<br>
+<br>
+长按
+</div>
+
+<div id="open" style="display:none;">
+
+<i>标记模式下的打开方法</i>
+<br>
+<br>
+<input type="radio" name="opn" value="0" checked="" onclick="save('opn',0)">长按
+<input type="radio" name="opn" value="1" onclick="save('opn',1)">快点三次
+</div>
 <br>
 <br>
 
 
-<input type="radio" name="mp2" value="0" checked="" onclick="save('mp2',0);">点下
-<input type="radio" name="mp2" value="1" onclick="save('mp2',1);">松开
-<input type="radio" name="mp2" value="2" onclick="save('mp2',2);">两次
-<br>
-<br>
-<br>
-<br>
-<br>
-<small>“两次”：点下和松开在不同的格子上</small>
 
 
 <script>
@@ -97,10 +90,27 @@ localStorage.setItem(rname,rv);
 
 
 
-load("mp1");
-load("mp2");
+var rv=load("tpn");
+load("opn");
 
 
+more(rv);
+
+
+
+
+function more(v)
+{
+if(v==0){
+$("open").style.display="block";
+$("hint").style.display="none";
+}
+else{
+$("hint").style.display="block";
+$("open").style.display="none";
+}
+
+}
 
 </script>
 
